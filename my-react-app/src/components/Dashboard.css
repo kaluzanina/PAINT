@@ -1,0 +1,29 @@
+/* Dashboard.css */
+.dashboard-container {
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.logout-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.logout-button:hover {
+  background-color: #c9302c;
+}
+
+.dashboard-main {
+  margin-top: 4rem;
+  padding: 2rem;
+}
