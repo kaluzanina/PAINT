@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 import "./LoginForm";
 
 export default function RegisterForm() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { register } = useUser();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -20,10 +21,15 @@ export default function RegisterForm() {
       return;
     }
 
-    // Przykładowe "fake" rejestrowanie — tu można podpiąć API
-    localStorage.setItem("user", JSON.stringify({ email }));
-    navigate("/login"); // po rejestracji przenosi do logowania
+    await register({ name, surname, email, password });
+    navigate("/login");
   };
+
+
+  // Przykładowe "fake" rejestrowanie — tu można podpiąć API
+  //   localStorage.setItem("user", JSON.stringify({ email }));
+  //   navigate("/login"); // po rejestracji przenosi do logowania
+  // };
 
   return (
     <div className="login-container">
@@ -54,7 +60,7 @@ export default function RegisterForm() {
               className="form-input"
             />
           </div>
-          
+
           <div className="form-group">
             <label>Email:</label>
             <input

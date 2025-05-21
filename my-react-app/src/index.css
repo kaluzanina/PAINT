@@ -2,29 +2,29 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
 
 body {
   margin: 0;
-  place-items: center;
+  padding: 0;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -45,9 +45,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -56,12 +58,51 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f4f4f4ff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
+
+/*dark mode*/
+body.dark-mode .history-page,
+body.dark-mode .dashboard-title,
+body.dark-mode .dashboard-header,
+body.dark-mode .dashboard-container 
+  {
+  background-color: #4a4848;
+  color: #e3e3e3;
+}
+
+body.dark-mode .stats-section,
+body.dark-mode .charts-section, 
+body.dark-mode .accordion-header {
+  background-color: #232222;
+  color: #e3e3e3;
+}
+
+
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+  color: #e3e3e3;
+  background-color: #232222;
+  border-color: #333;
+}
+
+body.dark-mode .accordion-chart {
+  background-color: #232222;
+  border-color: #333;
+}
+body, .dashboard-container, .accordion-chart {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+

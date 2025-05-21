@@ -1,9 +1,11 @@
 import { Navigate } from "react-router-dom";
+import { useUser } from "../context/UserContext";
 
 export default function ProtectedRoute({ children }) {
-  const token = localStorage.getItem("token");
+  const { user } = useUser();
+  //const token = localStorage.getItem("token");
 
-  if (!token) {
+  if (!user) {
     // Nie zalogowany -> przekieruj na login
     return <Navigate to="/login" replace />;
   }

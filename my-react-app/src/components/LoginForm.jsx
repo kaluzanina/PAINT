@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginForm.css"; // dodajemy własne style
+import { useUser } from "../context/UserContext";
+import "./LoginForm.css"; 
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useUser();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (email === "demo@demo.pl" && password === "demo123") {
-      localStorage.setItem("token", "fake-token");
+    const success = await login({email, password});
+    if (success) {
       navigate("/dashboard");
     } else {
       setError("Nieprawidłowy email lub hasło.");
